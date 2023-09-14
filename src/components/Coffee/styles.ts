@@ -4,7 +4,7 @@ import { THEME } from "../../styles/THEME";
 
 export const styles = StyleSheet.create({
   container: {
-    height: 200,
+    height: 262,
     borderTopLeftRadius: 4.8,
     borderTopRightRadius: 29,
     borderBottomLeftRadius: 29,

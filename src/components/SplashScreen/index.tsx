@@ -23,7 +23,7 @@ export function SplashScreen() {
     console.log("null")
     setTimeout(() => {
       navigation.navigate("home")
-    }, 3000)
+    }, 1000)
   }
 
   const animatedBackground = useAnimatedStyle(() => {
@@ -100,9 +100,9 @@ export function SplashScreen() {
             <Coffee width={42} />
           </Animated.View>
 
-          {/* <Animated.View style={[z]}>
+          <Animated.View style={[z]}>
             <CoffeeDelivery width={90} />
-          </Animated.View> */}
+          </Animated.View>
         </View>
       </Animated.View>
     )

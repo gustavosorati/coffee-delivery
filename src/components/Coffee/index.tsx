@@ -1,15 +1,23 @@
 import Animated, { Extrapolate, SharedValue, interpolate, useAnimatedStyle } from "react-native-reanimated";
 import { styles } from "./styles";
-import { Image, ImageSourcePropType, Text, View } from "react-native";
+import { Image, ImageSourcePropType, Pressable, Text, View } from "react-native";
 import { Tag } from "../Tag";
 import { THEME } from "../../styles/THEME";
+import { useNavigation } from "@react-navigation/native";
+import { RouteParamsList } from "../../routes";
 
 interface Props {
   index: number;
   card_size: number;
   space: number;
   scrollX: SharedValue<number>;
-  // imageRef: ImageSourcePropType;
+  product: {
+    id: number;
+    title: string;
+    tag: string;
+    description: string;
+    value: number;
+  }
 }
 
 export function Coffee({
@@ -17,7 +25,10 @@ export function Coffee({
   card_size,
   space,
   scrollX,
+  product
 }: Props) {
+  const navigation = useNavigation<RouteParamsList>();
+
   const range = [
     (index - 1) * card_size,
     (index) * card_size,
@@ -44,43 +55,71 @@ export function Coffee({
         },
       ]}
     >
-      <Image
-        source={require("../../assets/images/expresso.png")}
-        style={{
-          position: "relative",
-          alignSelf: "center",
-          marginTop: -20,
-          width: 64,
-          height: 64
-        }}
-      />
-
-      <View
-        style={{
-          flex: 1,
-          gap: 8,
-          alignItems: "center",
-          padding: 12
-        }}
+      <Pressable
+        onPress={() => navigation.navigate("product", {
+          id: product.id,
+          title: product.title,
+          description: product.description,
+          value: product.value
+        })}
+        style={{ flex: 1 }}
       >
-        <Tag />
-
-        <Text
+        <Image
+          source={require("../../assets/images/expresso.png")}
           style={{
-            fontSize: 14,
-            fontWeight: "700",
-            color: THEME.colors.base["gray-200"]
+            position: "relative",
+            alignSelf: "center",
+            marginTop: -40,
+            width: 100,
+            height: 100
           }}
-        >Irlandês</Text>
+        />
 
-        <Text
+        <View
           style={{
-            fontSize: 10,
-            fontWeight: "400",
-            color: THEME.colors.base["gray-400"]
+            flex: 1,
+            gap: 18,
+            alignItems: "center",
+            padding: 12
           }}
-        >Bebida a base de café, uísque irlandês, açúcar e chantilly</Text>
-      </View>
+        >
+          <Tag title={product.tag} />
+
+          <View style={{ gap: 4, alignItems: "center", justifyContent: "center" }}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: "700",
+                color: THEME.colors.base["gray-200"]
+              }}
+            >{product.title}</Text>
+
+            <Text
+              style={{
+                fontSize: 12,
+                fontWeight: "400",
+                color: THEME.colors.base["gray-400"]
+              }}
+            >{product.description}</Text>
+          </View>
+
+          <Text
+              style={{
+                fontSize: 14,
+                fontWeight: "400",
+                color: THEME.colors.product["yellow-dark"]
+              }}
+          >R$
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: "700",
+                color: THEME.colors.product["yellow-dark"]
+              }}
+            > {product.value.toFixed(2)}</Text>
+          </Text>
+        </View>
+      </Pressable>
     </Animated.View>
   )
 }
