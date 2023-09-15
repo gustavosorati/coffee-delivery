@@ -13,7 +13,7 @@ export function Smoke() {
   useEffect(() => {
     const interval = setInterval(() => {
       setPathIndex((prevPathIndex) => (prevPathIndex + 1) % SMOKE.length);
-    }, 150);
+    }, 270);
 
     return () => clearInterval(interval)
   }, []);

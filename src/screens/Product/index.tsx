@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Alert, Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Audio } from 'expo-av';
 
 import { useFocusEffect, useNavigation, useRoute } from "@react-navigation/native";
 
@@ -20,6 +21,8 @@ import { ButtonMinus } from "../../components/ButtonMinus";
 import { THEME } from "../../styles/THEME";
 import { styles } from "./styles";
 import { Smoke } from "../../components/Smoke";
+import { CartProduct } from "../../components/CartProduct";
+
 
 interface RouteParams {
   id: number;
@@ -37,6 +40,8 @@ export function Product() {
   const { addToast } = useToast();
   const { addProduct } = useCart();
 
+  const [sound, setSound] = useState<Audio.Sound>();
+
   const [selectedSize, setSelectedSize] = useState("");
   const [amount, setAmount] = useState(1);
   const [error, setError] = useState(false);
@@ -51,16 +56,29 @@ export function Product() {
     }
   }
 
-  const handleAddCoffee = () => {
+  const handleAddCoffee = async () => {
     if(!selectedSize) {
       setError(true);
-      Alert.alert(
-        "Selecione o tamanho",
-        "Por favor selecione o tamanho da sua xícara"
-      );
+
+      const { sound } = await Audio.Sound.createAsync(require('../../assets/sounds/error.mp3'));
+
+      setSound(sound);
+
+      await sound.playAsync().finally(() => {
+        Alert.alert(
+          "Selecione o tamanho",
+          "Por favor selecione o tamanho da sua xícara"
+        );
+      })
+
       return;
     }
     setError(false);
+
+    const { sound } = await Audio.Sound.createAsync(require('../../assets/sounds/cash-register.mp3'));
+
+    setSound(sound);
+    await sound.playAsync();
 
     addProduct(
       params.id,
@@ -128,13 +146,7 @@ export function Product() {
                 </TouchableOpacity>
 
                 {/* Items */}
-                <TouchableOpacity>
-                  <ShoppingCartSvg
-                    width={24}
-                    height={24}
-                    fill={THEME.colors.product["yellow-dark"]}
-                  />
-                </TouchableOpacity>
+                <CartProduct />
               </View>
 
               {/* Product Details */}
@@ -189,18 +201,22 @@ export function Product() {
               </View>
 
 
+             <View
+                style={{
+                  position: "absolute",
+                  bottom: -60,
+                  alignSelf: "center"
+                }}
+              >
               <Smoke />
 
               <Image
                 source={require("../../assets/images/cup.png")}
                 width={295}
                 height={260}
-                style={{
-                  position: "absolute",
-                  bottom: -60,
-                  alignSelf: "center"
-                }}
-              />
+
+                />
+             </View>
             </View>
 
             {/* Footer */}
