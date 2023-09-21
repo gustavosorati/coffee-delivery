@@ -47,7 +47,7 @@ export function Button({ text, variant = "primary", ...rest}: Props) {
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     height: 48,
     alignItems: "center",
     justifyContent: "center",

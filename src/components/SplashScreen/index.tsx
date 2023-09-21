@@ -7,20 +7,18 @@ import { useEffect } from "react";
 
 import Coffee from "../../assets/icons/coffee.svg";
 import CoffeeDelivery from "../../assets/icons/coffee-delivery.svg";
+import { RouteParamsList } from "../../routes";
 
 const RADIUS_TOP = Dimensions.get("window").height;
-// const SCREEN_HEIGHT = Dimensions.get("screen").height;
 
-console.log(RADIUS_TOP)
 export function SplashScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<RouteParamsList>();
 
   const backgroundAnimation = useSharedValue(0);
   const glassAnimation = useSharedValue(0);
   const LogoAnimation = useSharedValue(0);
 
   const navigateTo = () => {
-    console.log("null")
     setTimeout(() => {
       navigation.navigate("home")
     }, 1000)

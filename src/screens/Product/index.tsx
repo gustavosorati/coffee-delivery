@@ -10,18 +10,17 @@ import { useToast } from "../../contexts/ToastContext";
 import { RouteParamsList } from "../../routes";
 
 import ArrowSvg from "../../assets/icons/arrow-left.svg";
-import ShoppingCartSvg from "../../assets/icons/shopping-cart.svg";
 
 import { Tag } from "../../components/Tag";
+import { Smoke } from "../../components/Smoke";
 import { Select } from "../../components/Select";
 import { Button } from "../../components/Button";
 import { ButtonAdd } from "../../components/ButtonAdd";
+import { CartProduct } from "../../components/CartProduct";
 import { ButtonMinus } from "../../components/ButtonMinus";
 
 import { THEME } from "../../styles/THEME";
 import { styles } from "./styles";
-import { Smoke } from "../../components/Smoke";
-import { CartProduct } from "../../components/CartProduct";
 
 
 interface RouteParams {
@@ -283,10 +282,12 @@ export function Product() {
 
                 <ButtonAdd onPress={handleIncrementAmount} />
 
-                <Button
-                  text="Adicionar"
-                  onPress={handleAddCoffee}
-                />
+                <View style={{ flex: 1 }}>
+                  <Button
+                    text="Adicionar"
+                    onPress={handleAddCoffee}
+                  />
+                </View>
               </View>
             </View>
           </ScrollView>

@@ -1,26 +1,32 @@
 import { Image, StyleSheet, Text, TouchableOpacity, TouchableOpacityProps, View } from "react-native"
 import { THEME } from "../../styles/THEME"
+import { GetCoffeeBrand } from "../GetCoffeeBrand";
+import { CoffeeBrand } from "../../dto/CoffeeDTO";
 
 type Props = TouchableOpacityProps & {
   title: string;
   description: string;
+  image: string;
   value: number;
 }
 
 export function CoffeeBar({
   title,
   description,
+  image,
   value,
   ...rest
 }: Props) {
   return (
     <TouchableOpacity style={styles.container} {...rest}>
-      <Image
+
+      {GetCoffeeBrand(image as CoffeeBrand)}
+      {/* <Image
         width={96}
         height={96}
         source={require("../../assets/images/expresso.png")}
         style={{ marginTop: -35 }}
-      />
+      /> */}
 
       <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>

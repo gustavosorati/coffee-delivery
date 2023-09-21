@@ -22,6 +22,7 @@ interface ContextProps {
     size: string
   ) => void;
   deleteProduct: (id: number, size: string) => void;
+  clearCart: () => void;
   total: number;
 }
 
@@ -108,6 +109,10 @@ export const CartProvider = ({ children }: ProviderProps) => {
     }
   }
 
+  const clearCart = () => {
+    setProducts([]);
+  }
+
   const totalController = () => {
     let priceTotal = 0;
 
@@ -132,6 +137,7 @@ export const CartProvider = ({ children }: ProviderProps) => {
         products,
         addProduct,
         deleteProduct,
+        clearCart,
         total
       }}
     >

@@ -5,6 +5,7 @@ import { Home } from '../screens/Home';
 import { Product } from '../screens/Product';
 import { Cart } from '../screens/Cart';
 import { ToastProvider } from '../contexts/ToastContext';
+import { Success } from '../screens/Success';
 
 type RouteParams = {
   splash: undefined;
@@ -16,6 +17,7 @@ type RouteParams = {
     value: number;
   }
   cart: undefined;
+  success: undefined;
 }
 
 export type RouteParamsList = NativeStackNavigationProp<RouteParams>;
@@ -37,6 +39,7 @@ export function Routes() {
               <Stack.Screen name="home" component={Home} />
               <Stack.Screen name="product" component={Product} />
               <Stack.Screen name="cart" component={Cart} />
+              <Stack.Screen name="success" component={Success} />
             </Stack.Navigator>
           </ToastProvider>
         </NavigationContainer>

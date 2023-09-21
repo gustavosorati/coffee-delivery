@@ -290,6 +290,7 @@ export function Home() {
                  title={item.title}
                  description={item.description}
                  value={item.value}
+                 image={item.image}
                  onPress={() => handleRedirectTo({
                   id: item.id,
                   title: item.title,

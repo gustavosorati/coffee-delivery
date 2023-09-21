@@ -16,7 +16,7 @@ import { SwipeableCoffeeCard } from "../../components/SwipeableCoffeeCard";
 import { THEME } from "../../styles/THEME";
 
 export function Cart() {
-  const { products, total } = useCart();
+  const { clearCart, products, total } = useCart();
   const navigation = useNavigation<RouteParamsList>();
 
   const handleGoBack = () => navigation.goBack();
@@ -131,6 +131,10 @@ export function Cart() {
             <Button
               variant="secondary"
               text="Confirmar Pedido"
+              onPress={() => {
+                clearCart();
+                navigation.navigate("success")
+              }}
             />
           </View>
       </SafeAreaView>
