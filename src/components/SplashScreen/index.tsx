@@ -15,7 +15,7 @@ export function SplashScreen() {
   const navigation = useNavigation<RouteParamsList>();
 
   const backgroundAnimation = useSharedValue(0);
-  const glassAnimation = useSharedValue(0);
+  const cupOfCoffee = useSharedValue(0);
   const LogoAnimation = useSharedValue(0);
 
   const navigateTo = () => {
@@ -39,18 +39,18 @@ export function SplashScreen() {
     }
   });
 
-  const x = useAnimatedStyle(() => {
+  const coffeeAnimation = useAnimatedStyle(() => {
     return {
-      opacity: interpolate(glassAnimation.value,
+      opacity: interpolate(cupOfCoffee.value,
         [0, 1],
         [0, 1],
         Extrapolate.CLAMP
       ),
       transform: [
         {
-          translateX: interpolate(glassAnimation.value,
+          translateX: interpolate(cupOfCoffee.value,
             [0, 1],
-            [0, -20],
+            [20, -20],
             Extrapolate.CLAMP
           ),
         }
@@ -58,10 +58,10 @@ export function SplashScreen() {
     }
   });
 
-  const z = useAnimatedStyle(() => {
+  const logoAnimated = useAnimatedStyle(() => {
     return {
       opacity: interpolate(LogoAnimation.value,
-        [0.5, 1],
+        [0, 1],
         [0, 1],
         Extrapolate.CLAMP
       ),
@@ -69,7 +69,7 @@ export function SplashScreen() {
         {
           translateX: interpolate(LogoAnimation.value,
             [0, 1],
-            [60, 0],
+            [200, 0],
             Extrapolate.EXTEND
           ),
         }
@@ -78,14 +78,15 @@ export function SplashScreen() {
   });
 
   useEffect(() => {
-    withSequence(
       backgroundAnimation.value = withTiming(1, { duration: 1000 }, () => {
-        LogoAnimation.value = withTiming(1, { duration: 700 }, () => {
+
+        cupOfCoffee.value = withTiming(1, { duration: 1000, easing: Easing.ease }),
+
+        LogoAnimation.value = withTiming(1, { duration: 1000, easing: Easing.ease }, () => {
           "worklet";
           runOnJS(navigateTo)()
         })
-      }),
-      glassAnimation.value = withTiming(1, { duration: 1000, easing: Easing.ease }))
+      });
   }, []);
 
 
@@ -94,11 +95,11 @@ export function SplashScreen() {
         <Animated.View style={[animatedBackground, styles.circle]} />
 
         <View style={{ flexDirection: "row" }}>
-          <Animated.View style={[x, styles.logo]}>
+          <Animated.View style={[coffeeAnimation, styles.logo]}>
             <Coffee width={42} />
           </Animated.View>
 
-          <Animated.View style={[z]}>
+          <Animated.View style={[logoAnimated]}>
             <CoffeeDelivery width={90} />
           </Animated.View>
         </View>

@@ -18,6 +18,5 @@ export const styles = StyleSheet.create({
   logo: {
     opacity: 0,
     flexDirection: "row",
-    gap: 20
   }
 })
