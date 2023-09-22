@@ -1,17 +1,16 @@
 ![Rocketseat](_docs/capa.png)
 
-[![Watch the video](https://img.youtube.com/vi/xi5xTBax3Xg/maxresdefault.jpg
-)](https://youtu.be/xi5xTBax3Xg)
-
-<iframe width="560" height="315"
-src="https://youtu.be/xi5xTBax3Xg)"
-frameborder="0"
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-allowfullscreen></iframe>
-
 ## Sobre o projeto
 
+Coffee Delivery é um aplicativo React Native de uma e-commerce de cafés. O foco do projeto é criar animações e micro-interações fluidas e responsivas, tornando o uso do aplicativo uma experiência agradável.
+
 ## Features
+
+- Animações com Reanimated
+- Microinterações
+- Feedback Visual e Animações com Skia
+- Feedback tátil e sonoro
+- Remover item do carrinho a partir de um swipe.
 
 ## Pré-requisitos
 

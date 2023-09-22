@@ -20,6 +20,7 @@ import { styles } from "./styles";
 
 interface IProduct {
   id: number;
+  tag: string;
   title: string;
   description: string;
   value: number;
@@ -51,9 +52,10 @@ export function Home() {
     })
   }
 
-  const handleRedirectTo = ({id, title, description, value}: IProduct) => {
+  const handleRedirectTo = ({id, tag, title, description, value}: IProduct) => {
     navigation.navigate("product", {
       id,
+      tag,
       title,
       description,
       value
@@ -293,6 +295,7 @@ export function Home() {
                  image={item.image}
                  onPress={() => handleRedirectTo({
                   id: item.id,
+                  tag: item.tag,
                   title: item.title,
                   description: item.description,
                   value: item.value

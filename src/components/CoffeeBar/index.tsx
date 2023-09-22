@@ -20,13 +20,7 @@ export function CoffeeBar({
   return (
     <TouchableOpacity style={styles.container} {...rest}>
 
-      {GetCoffeeBrand(image as CoffeeBrand)}
-      {/* <Image
-        width={96}
-        height={96}
-        source={require("../../assets/images/expresso.png")}
-        style={{ marginTop: -35 }}
-      /> */}
+      {GetCoffeeBrand({ image: image as CoffeeBrand })}
 
       <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>

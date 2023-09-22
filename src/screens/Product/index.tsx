@@ -25,6 +25,7 @@ import { styles } from "./styles";
 
 interface RouteParams {
   id: number;
+  tag: string;
   title: string;
   description: string;
   value: number;
@@ -151,7 +152,7 @@ export function Product() {
               {/* Product Details */}
               <View>
                 <View style={{ flexDirection: "row", marginBottom: 16 }}>
-                  <Tag title="teste" variant="secondary" />
+                  <Tag title={params.tag} variant="secondary" />
                 </View>
 
                 <View
@@ -195,26 +196,20 @@ export function Product() {
                     color: THEME.colors.base["gray-900"]
                   }}
                 >
-                  Bebida a base de café, uísque irlandês, açúcar e chantilly
+                  {params.description}
                 </Text>
               </View>
 
 
-             <View
-                style={{
-                  position: "absolute",
-                  bottom: -60,
-                  alignSelf: "center"
-                }}
-              >
+             <View style={{ position: "absolute", bottom: -60, alignSelf: "center" }}>
+
               <Smoke />
 
               <Image
                 source={require("../../assets/images/cup.png")}
                 width={295}
                 height={260}
-
-                />
+              />
              </View>
             </View>
 

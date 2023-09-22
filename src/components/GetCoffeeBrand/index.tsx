@@ -1,7 +1,11 @@
-import { Image } from "react-native";
+import { Image, ImageProps } from "react-native";
 import { CoffeeBrand } from "../../dto/CoffeeDTO";
 
-export function GetCoffeeBrand(image: CoffeeBrand) {
+interface Props extends Partial<ImageProps> {
+  image: CoffeeBrand;
+}
+
+export function GetCoffeeBrand({image, ...rest}: Props) {
   switch (image) {
     case CoffeeBrand.expresso:
       return (
@@ -10,6 +14,7 @@ export function GetCoffeeBrand(image: CoffeeBrand) {
           height={96}
           source={require("../../assets/images/expresso.png")}
           style={{ marginTop: -35 }}
+          {...rest}
         />
       );
     case CoffeeBrand.americano:
@@ -19,6 +24,7 @@ export function GetCoffeeBrand(image: CoffeeBrand) {
           height={96}
           source={require("../../assets/images/americano.png")}
           style={{ marginTop: -35 }}
+          {...rest}
         />
       )
     case CoffeeBrand.capuccino:
@@ -28,6 +34,7 @@ export function GetCoffeeBrand(image: CoffeeBrand) {
           height={96}
           source={require("../../assets/images/capuccino.png")}
           style={{ marginTop: -35 }}
+          {...rest}
         />
       );
     case CoffeeBrand.chocolate_quente:
@@ -37,6 +44,7 @@ export function GetCoffeeBrand(image: CoffeeBrand) {
           height={96}
           source={require("../../assets/images/chocolate-quente.png")}
           style={{ marginTop: -35 }}
+          {...rest}
         />
       );
     case CoffeeBrand.cremoso:
@@ -46,6 +54,7 @@ export function GetCoffeeBrand(image: CoffeeBrand) {
           height={96}
           source={require("../../assets/images/expresso-cremoso.png")}
           style={{ marginTop: -35 }}
+          {...rest}
         />
       );
     case CoffeeBrand.cubano:
@@ -55,6 +64,7 @@ export function GetCoffeeBrand(image: CoffeeBrand) {
           height={96}
           source={require("../../assets/images/cubano.png")}
           style={{ marginTop: -35 }}
+          {...rest}
         />
       )
     case CoffeeBrand.especial:
@@ -64,6 +74,7 @@ export function GetCoffeeBrand(image: CoffeeBrand) {
           height={96}
           source={require("../../assets/images/cafe-gelado.png")}
           style={{ marginTop: -35 }}
+          {...rest}
         />
       );
     case CoffeeBrand.havaiano:
@@ -73,6 +84,7 @@ export function GetCoffeeBrand(image: CoffeeBrand) {
           height={96}
           source={require("../../assets/images/havaiano.png")}
           style={{ marginTop: -35 }}
+          {...rest}
         />
       );
     case CoffeeBrand.latte:
@@ -82,6 +94,7 @@ export function GetCoffeeBrand(image: CoffeeBrand) {
           height={96}
           source={require("../../assets/images/latte.png")}
           style={{ marginTop: -35 }}
+          {...rest}
         />
       );
     case CoffeeBrand.mocaccino:
@@ -91,6 +104,7 @@ export function GetCoffeeBrand(image: CoffeeBrand) {
           height={96}
           source={require("../../assets/images/mochaccino.png")}
           style={{ marginTop: -35 }}
+          {...rest}
         />
       );
     default:
@@ -100,6 +114,7 @@ export function GetCoffeeBrand(image: CoffeeBrand) {
           height={96}
           source={require("../../assets/images/expresso.png")}
           style={{ marginTop: -35 }}
+          {...rest}
         />
       );
     }

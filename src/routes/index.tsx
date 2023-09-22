@@ -12,6 +12,7 @@ type RouteParams = {
   home: undefined;
   product: {
     id: number;
+    tag: string;
     title: string;
     description: string;
     value: number;

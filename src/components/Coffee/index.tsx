@@ -5,6 +5,8 @@ import { Tag } from "../Tag";
 import { THEME } from "../../styles/THEME";
 import { useNavigation } from "@react-navigation/native";
 import { RouteParamsList } from "../../routes";
+import { GetCoffeeBrand } from "../GetCoffeeBrand";
+import { CoffeeBrand } from "../../dto/CoffeeDTO";
 
 interface Props {
   index: number;
@@ -15,6 +17,7 @@ interface Props {
     id: number;
     title: string;
     tag: string;
+    image: string;
     description: string;
     value: number;
   }
@@ -45,6 +48,8 @@ export function Coffee({
     return { transform: [{ scale: scale }] }
   }, [scrollX.value]);
 
+  const coffeeImage = product.image as CoffeeBrand;
+
   return (
     <Animated.View
       style={[
@@ -58,22 +63,23 @@ export function Coffee({
       <Pressable
         onPress={() => navigation.navigate("product", {
           id: product.id,
+          tag: product.tag,
           title: product.title,
           description: product.description,
           value: product.value
         })}
         style={{ flex: 1 }}
       >
-        <Image
-          source={require("../../assets/images/expresso.png")}
-          style={{
+        {GetCoffeeBrand({
+          image: coffeeImage,
+          style: {
             position: "relative",
             alignSelf: "center",
             marginTop: -40,
             width: 100,
             height: 100
-          }}
-        />
+          }
+        })}
 
         <View
           style={{
