@@ -4,6 +4,8 @@
 
 Coffee Delivery é um aplicativo React Native de uma e-commerce de cafés. O foco do projeto é criar animações e micro-interações fluidas e responsivas, tornando o uso do aplicativo uma experiência agradável.
 
+- [Layout do projeto](https://www.figma.com/file/yNDpRKuwZaPWg25G72x7Ac/Coffee-Delivery-%E2%80%A2-Desafio-React-Native-5?type=design&node-id=2%3A12&mode=design&t=nvy66lscr3IwL30w-1)
+
 ## Features
 
 - Animações com Reanimated
@@ -31,5 +33,7 @@ $ npm install
 # Instale as dependências
 $ npx expo start
 ```
+
+
 
 
