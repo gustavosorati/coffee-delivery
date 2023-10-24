@@ -3,12 +3,12 @@ import { View,} from "react-native";
 import { styles } from "./styles";
 import { useEffect, useRef, useState } from "react";
 import { SMOKE } from "./data";
-import { useAnimatedProps, useSharedValue } from "react-native-reanimated";
+import { useAnimatedProps, useSharedValue, withTiming } from "react-native-reanimated";
 
 export function Smoke() {
-  const x = useSharedValue(0);
+  const x = useSharedValue(1);
 
-  const [ pathIndex, setPathIndex ] = useState(1);
+  const [ pathIndex, setPathIndex ] = useState(x.value);
 
   useEffect(() => {
     const interval = setInterval(() => {

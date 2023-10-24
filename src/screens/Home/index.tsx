@@ -22,8 +22,14 @@ interface IProduct {
   id: number;
   tag: string;
   title: string;
+  image: string;
   description: string;
   value: number;
+}
+
+interface Section {
+  title: string;
+  data: IProduct[];
 }
 
 const CARD_SIZE = 208;
@@ -36,10 +42,10 @@ export function Home() {
   const scrollY= useSharedValue(0);
 
   const navigation = useNavigation<RouteParamsList>();
-  const sectionListRef = useRef<SectionList>(null);
+  const sectionListRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
+  const AnimatedSectionList = Animated.createAnimatedComponent<SectionListProps<IProduct, Section>>(SectionList);
 
   const AnimatedSafeArea = Animated.createAnimatedComponent(SafeAreaView);
 
@@ -297,6 +303,7 @@ export function Home() {
                   id: item.id,
                   tag: item.tag,
                   title: item.title,
+                  image: item.image,
                   description: item.description,
                   value: item.value
                  })}
